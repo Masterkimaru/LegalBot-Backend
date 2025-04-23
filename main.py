@@ -32,6 +32,15 @@ class QueryResponse(BaseModel):
     answer: str
     timestamp: datetime
 
+@app.get("/")
+async def health_check():
+    """Health check endpoint for Render and monitoring"""
+    return {
+        "status": "live",
+        "timestamp": datetime.utcnow().isoformat(),
+        "service": "LegalBot Backend"
+    }
+
 @app.post("/query", response_model=QueryResponse)
 async def process_query(request: QueryRequest):
     """
