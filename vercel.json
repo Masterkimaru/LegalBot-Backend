@@ -2,17 +2,23 @@
   "version": 2,
   "builds": [
     {
-      "src": "*.py",
+      "src": "main.py",
       "use": "@vercel/python",
-      "config": { 
+      "config": {
         "pythonVersion": "3.9"
       }
     }
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "app.py"
+      "src": "/",
+      "dest": "main.py",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/query",
+      "dest": "main.py",
+      "methods": ["POST"]
     }
   ]
 }
